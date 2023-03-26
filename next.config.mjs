@@ -7,6 +7,7 @@ const config = {
       { hostname: "source.unsplash.com" },
     ],
   },
+  optimizeFonts: false,
   typescript: {
     // Set this to false if you want production builds to abort if there's type errors
     ignoreBuildErrors: process.env.VERCEL_ENV === "production",
