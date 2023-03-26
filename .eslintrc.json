@@ -1,0 +1,10 @@
+{
+  "extends": ["@tim-w-james", "next"],
+  "rules": {
+    "react-hooks/exhaustive-deps": "error",
+    "max-len": "off",
+    "react-refresh/only-export-components": "off",
+    "@typescript-eslint/prefer-nullish-coalescing": "off",
+    "@typescript-eslint/no-explicit-any": "off"
+  }
+}
