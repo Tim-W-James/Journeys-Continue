@@ -1,58 +1,91 @@
 import clsx from "clsx";
-import { Routes } from "lib/sanity.queries";
+import { Routes, Settings } from "lib/sanity.queries";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { NavDropdown } from "react-bootstrap";
+import { Container, Navbar, NavDropdown } from "react-bootstrap";
 import Nav from "react-bootstrap/Nav";
 
-const Navigation = ({ routes }: { routes: Routes }) => {
+import SanityImage from "./SanityImage";
+
+const Navigation = ({
+  routes,
+  settings,
+}: {
+  routes: Routes;
+  settings: Settings;
+}) => {
   const router = useRouter();
   return (
-    <Nav className={clsx("pt-1 px-1")} variant="tabs">
-      <Nav.Item>
-        <Nav.Link
-          active={router.asPath === "/" || router.pathname === "/"}
-          as={Link}
-          href="/"
-        >
-          Home
-        </Nav.Link>
-      </Nav.Item>
-      {routes.items?.map((route, index) =>
-        route.routes ? (
-          route.routes.length === 1 ? (
-            <Nav.Item key={index}>
-              <Nav.Link
-                active={router.asPath === `/${route.routes[0].path ?? ""}`}
-                as={Link}
-                href={route.routes[0].path}
-              >
-                {route.title ?? "Untitled"}
-              </Nav.Link>
-            </Nav.Item>
-          ) : (
-            <NavDropdown
-              active={route.routes
-                .map((route) => `/${route.path ?? ""}`)
-                .includes(router.asPath)}
-              key={index}
-              title={route.title ?? "Untitled"}
+    <Navbar className={clsx("bg-white")} expand="lg" sticky="top">
+      <Container className={clsx("navbar-underline align-items-end")}>
+        <Navbar.Brand as={Link} href="/">
+          <SanityImage
+            alt="Journeys Continue Logo"
+            className={clsx("d-inline-block align-top")}
+            image={settings.brandLogo}
+            width={160}
+          />{" "}
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className={clsx("justify-content-end flex-grow-1 pe-3")}>
+            <Nav.Link
+              active={router.asPath === "/" || router.pathname === "/"}
+              as={Link}
+              // eslint-disable-next-line sonarjs/no-duplicate-string
+              className={clsx("nav-link nav-item")}
+              href="/"
             >
-              {route.routes.map((subItem, index) => (
-                <NavDropdown.Item
-                  active={router.asPath === `/${subItem.path ?? ""}`}
+              Home
+            </Nav.Link>
+            {routes.items?.map((route, index) =>
+              route.routes ? (
+                route.routes.length === 1 ? (
+                  <Nav.Link
+                    active={router.asPath === `/${route.routes[0].path ?? ""}`}
+                    as={Link}
+                    className={clsx("nav-link nav-item")}
+                    href={route.routes[0].path}
+                    key={index}
+                  >
+                    {route.title ?? "Untitled"}
+                  </Nav.Link>
+                ) : (
+                  <NavDropdown
+                    active={route.routes
+                      .map((route) => `/${route.path ?? ""}`)
+                      .includes(router.asPath)}
+                    key={index}
+                    title={route.title ?? "Untitled"}
+                  >
+                    {route.routes.map((subItem, index) => (
+                      <NavDropdown.Item
+                        active={router.asPath === `/${subItem.path ?? ""}`}
+                        as={Link}
+                        className={clsx("dropdown-item")}
+                        href={subItem.path}
+                        key={index}
+                      >
+                        {subItem.title ?? "Untitled"}
+                      </NavDropdown.Item>
+                    ))}
+                  </NavDropdown>
+                )
+              ) : (
+                <Nav.Link
                   as={Link}
-                  href={subItem.path}
+                  className={clsx("nav-link nav-item")}
+                  href="/"
                   key={index}
                 >
-                  {subItem.title ?? "Untitled"}
-                </NavDropdown.Item>
-              ))}
-            </NavDropdown>
-          )
-        ) : null
-      )}
-    </Nav>
+                  {route.title ?? "Untitled"}
+                </Nav.Link>
+              )
+            )}
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 };
 export default Navigation;

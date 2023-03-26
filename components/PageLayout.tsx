@@ -5,8 +5,11 @@ import PageHead from "components/PageHead";
 import type { Page, Settings } from "lib/sanity.queries";
 import { Container } from "react-bootstrap";
 
+import BackgroundHeader from "./BackgroundHeader";
+import ContactHeader from "./ContactHeader";
 import Navigation from "./Nav";
 import PortableTextRenderer from "./portableText/PortableTextRenderer";
+import PrimaryFooter from "./PrimaryFooter";
 
 export interface PageLayoutProps {
   preview?: boolean;
@@ -30,10 +33,13 @@ const PageLayout = (props: PageLayoutProps) => {
       <PageHead pageMeta={metadata} settings={settings} />
 
       <Layout loading={loading} preview={Boolean(preview)}>
-        <Navigation routes={routes} />
-        <Container>
-          <h1 className={clsx("pt-3")}>{content?.header ?? "Heading"}</h1>
-          <hr />
+        <ContactHeader />
+        <Navigation routes={routes} settings={settings} />
+        <BackgroundHeader
+          settings={settings}
+          title={content?.header ?? "Heading"}
+        />
+        <Container className={clsx("mt-3 px-3")}>
           {content?.body ? (
             <PortableText
               components={PortableTextRenderer}
@@ -43,6 +49,7 @@ const PageLayout = (props: PageLayoutProps) => {
             "Body"
           )}
         </Container>
+        <PrimaryFooter />
       </Layout>
     </>
   );

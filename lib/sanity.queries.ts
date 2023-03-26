@@ -56,4 +56,6 @@ export interface Page {
 export interface Settings {
   title?: string;
   description?: string;
+  brandLogo?: unknown;
+  backgroundImage?: unknown;
 }

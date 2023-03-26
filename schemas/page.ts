@@ -42,7 +42,12 @@ export default defineType({
                     name: "url",
                     type: "url",
                     title: "URL",
-                    validation: (rule) => rule.uri().required(),
+                    validation: (rule) =>
+                      rule
+                        .uri({
+                          scheme: ["http", "https", "mailto", "tel"],
+                        })
+                        .required(),
                   },
                   {
                     name: "hoverText",
@@ -108,11 +113,19 @@ export default defineType({
               validation: (rule) => rule.max(5000).min(10),
             },
             {
+              name: "isCentered",
+              type: "boolean",
+              title: "Center Image",
+              description: "Center the image in the middle of the screen.",
+              initialValue: true,
+            },
+            {
               name: "wrapText",
               type: "boolean",
               title: "Wrap Text",
               description: "Wrap text around the image.",
               initialValue: false,
+              hidden: ({ parent }) => !parent?.isCentered,
             },
           ],
         },

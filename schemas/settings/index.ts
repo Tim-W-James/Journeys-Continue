@@ -26,5 +26,19 @@ export default defineType({
       initialValue: "Site Description",
       validation: (rule) => rule.max(155).required(),
     }),
+    defineField({
+      name: "brandLogo",
+      description: "Logo used in the navbar.",
+      title: "Brand Logo",
+      type: "image",
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: "backgroundImage",
+      title: "Background Image",
+      description: "Background image used on large screen sizes.",
+      type: "image",
+      validation: (rule) => rule.required(),
+    }),
   ],
 });

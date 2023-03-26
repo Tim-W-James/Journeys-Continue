@@ -12,6 +12,7 @@ const imageSchema = z.object({
   imageDescription: z.string().optional(),
   imageWidth: z.number().optional(),
   wrapText: z.boolean().optional(),
+  isCentered: z.boolean().optional(),
   imageFile: z.object({
     _type: z.literal("image"),
     asset: z.object({
@@ -31,20 +32,24 @@ const ImageRenderer: React.FC<{
   const imageProps = useNextSanityImage(sanityClient, image.imageFile);
   const { width, height } = getImageDimensions(image.imageFile);
   return (
-    <Image
-      {...imageProps}
-      alt={image.imageDescription || ""}
-      loading="lazy"
-      style={{
-        // Display alongside text if image appears inside a block text span
-        display: isInline ? "inline-block" : "block",
-        float: image.wrapText ? "left" : "none",
+    <div
+      className={clsx({ "d-flex justify-content-center": image.isCentered })}
+    >
+      <Image
+        {...imageProps}
+        alt={image.imageDescription || ""}
+        loading="lazy"
+        style={{
+          // Display alongside text if image appears inside a block text span
+          display: isInline ? "inline-block" : "block",
+          float: image.wrapText ? "left" : "none",
 
-        // Avoid jumping around with aspect-ratio CSS property
-        aspectRatio: width / height,
-      }}
-      width={image.imageWidth || width}
-    />
+          // Avoid jumping around with aspect-ratio CSS property
+          aspectRatio: width / height,
+        }}
+        width={image.imageWidth || width}
+      />
+    </div>
   );
 };
 

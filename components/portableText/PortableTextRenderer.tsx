@@ -15,6 +15,12 @@ const PortableTextRenderer: PortableTextComponents = {
     blockquote: ({ children }) => (
       <blockquote className={clsx("blockquote")}>{children}</blockquote>
     ),
+    h1: ({ children }) => (
+      <>
+        <h1>{children}</h1>
+        <hr className="header-underline" />
+      </>
+    ),
   },
   marks: {
     em: ({ children }) => <em>{children}</em>,
