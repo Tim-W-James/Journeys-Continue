@@ -1,5 +1,10 @@
 @import "../node_modules/bootstrap/scss/bootstrap";
 
+@font-face {
+  font-family: 'Tiresias Infofont';
+  src: url('../public/fonts/Tiresias_Infofont.ttf') format('truetype');
+}
+
 body {
   margin: 0;
   margin-bottom: 5rem;
