@@ -99,6 +99,9 @@ Deployed to: [journeyscontinue.com.au/](https://journeyscontinue.com.au/).
 View my template containing these features here:
 <https://github.com/Tim-W-James/cms-site-builder>
 
+Read this blog to see how I created a CMS site builder:
+<https://timjames.dev/blog/creating-a-site-builder-with-nextjs-and-sanity-cms-1e61>
+
 ### Built With
 
 - React and Next JS
