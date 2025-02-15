@@ -13,7 +13,6 @@ const BackgroundHeader: React.FC<{ title: string; settings: Settings }> = ({
       data-ride="carousel"
       id="carousel"
       style={{
-        borderTop: "4px solid hsl(208deg 74% 22%)",
         backgroundImage: `url(${ImageURL(settings.backgroundImage) ?? ""})`,
       }}
     >
