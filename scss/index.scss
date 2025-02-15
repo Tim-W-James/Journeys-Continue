@@ -59,14 +59,11 @@ hr {
   }
 }
 
-.navbar-underline {
-  border-bottom: 4px solid hsl(208deg 74% 22%);
-}
-
 .navbar {
   padding-top: 0;
   padding-bottom: 0;
   font-size: x-large;
+  text-wrap: nowrap;
 }
 
 .navbar-light .navbar-nav .nav-link {
