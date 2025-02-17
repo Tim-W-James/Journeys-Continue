@@ -48,6 +48,8 @@ const PageLayout = (props: PageLayoutProps) => {
           ) : (
             "Body"
           )}
+          <br />
+          <br />
         </Container>
         <PrimaryFooter />
       </Layout>

@@ -16,8 +16,12 @@ const Navigation = ({
 }) => {
   const router = useRouter();
   return (
-    <Navbar className={clsx("bg-white")} expand="lg" sticky="top">
-      <Container className={clsx("navbar-underline align-items-end")}>
+    <Navbar
+      className={clsx("bg-white navbar-underline")}
+      expand="lg"
+      sticky="top"
+    >
+      <Container className={clsx("align-items-end")}>
         <Navbar.Brand as={Link} href="/">
           <SanityImage
             alt="Journeys Continue Logo"
