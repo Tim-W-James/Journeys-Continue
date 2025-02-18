@@ -1,7 +1,9 @@
-User-agent: Googlebot
-Disallow: /nogooglebot/
-
+# *
 User-agent: *
 Allow: /
 
-Sitemap: https://journeyscontinue.com.au/sitemap.xml
+# Host
+Host: https://www.journeyscontinue.com.au
+
+# Sitemaps
+Sitemap: https://www.journeyscontinue.com.au/sitemap.xml

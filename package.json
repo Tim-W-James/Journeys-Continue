@@ -2,6 +2,7 @@
   "private": true,
   "scripts": {
     "build": "next build",
+    "postbuild": "next-sitemap",
     "dev": "next",
     "format": "npx prettier --write . --ignore-path .gitignore --cache",
     "lint": "next lint -- --ignore-path .gitignore",
@@ -25,6 +26,7 @@
     "next": "^13.2.4",
     "next-sanity": "^4.3.3",
     "next-sanity-image": "^6.0.0",
+    "next-sitemap": "^4.2.3",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.2",
     "react-dom": "^18.2.0",
