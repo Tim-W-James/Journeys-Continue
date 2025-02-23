@@ -38,13 +38,16 @@ const FileComponent: React.FC<{ value?: unknown }> = ({ value }) => {
       width="100%"
     />
   ) : (
-    <a
-      href={`${sanityBaseUrl}/${id}.${extension}?dl=${
-        fileName ? encodeURIComponent(fileName) : id
-      }.${extension}`}
-    >
-      {`${fileName || "file"}.${extension}` || "Download file"}
-    </a>
+    <>
+      <a
+        href={`${sanityBaseUrl}/${id}.${extension}?dl=${
+          fileName ? encodeURIComponent(fileName) : id
+        }.${extension}`}
+      >
+        {`${fileName || "file"}.${extension}` || "Download file"}
+      </a>
+      <br />
+    </>
   );
 };
 
